@@ -1,0 +1,93 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: networkperformance-test-controller
+  labels:
+    app.kubernetes.io/name: networkperformance-test-controller
+    helm.sh/chart: networkperformance-test-controller
+    app.kubernetes.io/instance: {{ .Release.Name }}
+rules:
+  - apiGroups:
+      - networkmachinery.io
+    resources:
+      - networkperformancetest
+      - networkperformancetests
+      - networkperformancetest/status
+      - networkperformancetests/status
+    verbs:
+      - get
+      - list
+      - watch
+      - patch
+      - update
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - pods/log
+      - services
+      - endpoints
+      - nodes
+      - replicationcontrollers
+      - namespaces
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - delete
+  - apiGroups:
+      - authorization.k8s.io
+    resources:
+      - selfsubjectaccessreviews
+    verbs:
+      - create
+      - list
+      - get
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    resourceNames:
+      - networkperformance-test-controller-leader-election
+      - sflow-controller-leader-election
+    verbs:
+      - get
+      - watch
+      - update
+      - patch
+  - apiGroups:
+      - ""
+      - batch
+      - rbac.authorization.k8s.io
+      - admissionregistration.k8s.io
+    resources:
+      - events
+      - secrets
+      - configmaps
+      - services
+      - serviceaccounts
+      - roles
+      - rolebindings
+      - mutatingwebhookconfigurations
+      - validatingwebhookconfigurations
+    verbs:
+      - "*"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: networkperformance-test-controller
+  labels:
+    app.kubernetes.io/name: networkperformance-test-controller
+    helm.sh/chart: networkperformance-test-controller
+    app.kubernetes.io/instance: {{ .Release.Name }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: networkperformance-test-controller
+subjects:
+  - kind: ServiceAccount
+    name: networkperformance-test-controller
+    namespace: {{ .Release.Namespace }}

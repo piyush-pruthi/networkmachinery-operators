@@ -26,4 +26,6 @@ type NetworkMonitorExpansion interface{}
 
 type NetworkNotificationExpansion interface{}
 
+type NetworkPerformanceTestExpansion interface{}
+
 type NetworkTrafficShaperExpansion interface{}

@@ -32,6 +32,8 @@ type Interface interface {
 	NetworkMonitors() NetworkMonitorInformer
 	// NetworkNotifications returns a NetworkNotificationInformer.
 	NetworkNotifications() NetworkNotificationInformer
+	// NetworkPerformanceTests returns a NetworkPerformanceTestInformer.
+	NetworkPerformanceTests() NetworkPerformanceTestInformer
 	// NetworkTrafficShapers returns a NetworkTrafficShaperInformer.
 	NetworkTrafficShapers() NetworkTrafficShaperInformer
 }
@@ -60,6 +62,11 @@ func (v *version) NetworkMonitors() NetworkMonitorInformer {
 // NetworkNotifications returns a NetworkNotificationInformer.
 func (v *version) NetworkNotifications() NetworkNotificationInformer {
 	return &networkNotificationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// NetworkPerformanceTests returns a NetworkPerformanceTestInformer.
+func (v *version) NetworkPerformanceTests() NetworkPerformanceTestInformer {
+	return &networkPerformanceTestInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // NetworkTrafficShapers returns a NetworkTrafficShaperInformer.

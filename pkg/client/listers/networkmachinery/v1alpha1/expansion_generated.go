@@ -32,6 +32,10 @@ type NetworkMonitorListerExpansion interface{}
 // NetworkNotificationLister.
 type NetworkNotificationListerExpansion interface{}
 
+// NetworkPerformanceTestListerExpansion allows custom methods to be added to
+// NetworkPerformanceTestLister.
+type NetworkPerformanceTestListerExpansion interface{}
+
 // NetworkTrafficShaperListerExpansion allows custom methods to be added to
 // NetworkTrafficShaperLister.
 type NetworkTrafficShaperListerExpansion interface{}

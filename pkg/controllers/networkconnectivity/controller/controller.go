@@ -25,7 +25,7 @@ func DefaultPredicates() []predicate.Predicate {
 	return []predicate.Predicate{GenerationChangedPredicate()}
 }
 
-// Add creates a new NetworkMonitor Controller and adds it to the Manager
+// Add creates a new NetworkConnectivity Controller and adds it to the Manager
 func Add(mgr manager.Manager) error {
 	return add(mgr, newReconciler(mgr), DefaultPredicates())
 }

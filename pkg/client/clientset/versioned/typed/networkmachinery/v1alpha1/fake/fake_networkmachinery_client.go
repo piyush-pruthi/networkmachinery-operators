@@ -42,6 +42,10 @@ func (c *FakeNetworkmachineryV1alpha1) NetworkNotifications() v1alpha1.NetworkNo
 	return &FakeNetworkNotifications{c}
 }
 
+func (c *FakeNetworkmachineryV1alpha1) NetworkPerformanceTests() v1alpha1.NetworkPerformanceTestInterface {
+	return &FakeNetworkPerformanceTests{c}
+}
+
 func (c *FakeNetworkmachineryV1alpha1) NetworkTrafficShapers() v1alpha1.NetworkTrafficShaperInterface {
 	return &FakeNetworkTrafficShapers{c}
 }

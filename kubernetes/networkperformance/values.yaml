@@ -1,0 +1,7 @@
+image:
+  repository: pruthi/private-workspace
+  tag: networkmachinery
+  pullPolicy: Always
+
+webhookConfig:
+  secretName: networkperformance-webhook-secret

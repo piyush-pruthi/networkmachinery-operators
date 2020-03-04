@@ -63,6 +63,10 @@ clean:
 requirements:
 	@GO111MODULE=on go get github.com/golangci/golangci-lint/cmd/golangci-lint@v1.16.0
 
+.PHONY: fmt
+fmt:
+	@go fmt ./...
+
 .PHONY: lint
 lint:
 	@go run github.com/golangci/golangci-lint/cmd/golangci-lint run
@@ -90,6 +94,10 @@ start-network-control-controller:
 .PHONY: start-network-connectivity-test-controller
 start-network-connectivity-test-controller:
 	@go run cmd/networkmachinery-hyper/main.go networkconnectivity-test-controller
+
+.PHONY: start-network-performance-test-controller
+start-network-performance-test-controller:
+	@go run cmd/networkmachinery-hyper/main.go networkperformance-test-controller
 
 .PHONY: start-network-trafficshaper-controller
 start-network-trafficshaper-controller:

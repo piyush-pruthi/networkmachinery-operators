@@ -33,7 +33,6 @@ func (nct *NetworkConnectivityTestCmdOpts) InjectRetryOptions(mgrOpts *manager.O
 	return mgrOpts
 }
 
-
 func (nct *NetworkConnectivityTestCmdOpts) InitConfig() *rest.Config {
 	config, err := nct.ToRESTConfig()
 	if err != nil {

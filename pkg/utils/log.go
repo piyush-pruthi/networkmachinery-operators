@@ -10,4 +10,3 @@ func LogErrAndExit(err error, msg string, keysAndValues ...interface{}) {
 	log.Log.Error(err, msg, keysAndValues...)
 	os.Exit(1)
 }
-

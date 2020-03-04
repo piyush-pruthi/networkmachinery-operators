@@ -61,7 +61,7 @@ func GetPodsByLabels(ctx context.Context, c client.Client, labelsMap labels.Sele
 	podList := &corev1.PodList{}
 	err := c.List(ctx, podList, &client.ListOptions{
 		Namespace:     namespace,
-		LabelSelector: labelsMap,	
+		LabelSelector: labelsMap,
 	})
 	if err != nil {
 		return nil, err

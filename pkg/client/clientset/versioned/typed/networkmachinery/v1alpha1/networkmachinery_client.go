@@ -31,6 +31,7 @@ type NetworkmachineryV1alpha1Interface interface {
 	NetworkConnectivityTestsGetter
 	NetworkMonitorsGetter
 	NetworkNotificationsGetter
+	NetworkPerformanceTestsGetter
 	NetworkTrafficShapersGetter
 }
 
@@ -49,6 +50,10 @@ func (c *NetworkmachineryV1alpha1Client) NetworkMonitors() NetworkMonitorInterfa
 
 func (c *NetworkmachineryV1alpha1Client) NetworkNotifications() NetworkNotificationInterface {
 	return newNetworkNotifications(c)
+}
+
+func (c *NetworkmachineryV1alpha1Client) NetworkPerformanceTests() NetworkPerformanceTestInterface {
+	return newNetworkPerformanceTests(c)
 }
 
 func (c *NetworkmachineryV1alpha1Client) NetworkTrafficShapers() NetworkTrafficShaperInterface {
