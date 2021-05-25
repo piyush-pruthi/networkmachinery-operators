@@ -1,6 +1,6 @@
 image:
-  repository: pruthi/private-workspace
-  tag: networkmachinery
+  repository: pruthi/npt
+  tag: latest
   pullPolicy: Always
 
 webhookConfig:

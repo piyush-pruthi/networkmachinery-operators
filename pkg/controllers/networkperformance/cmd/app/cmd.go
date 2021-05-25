@@ -8,12 +8,12 @@ import (
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 	"sigs.k8s.io/controller-runtime/pkg/manager"
 	logf "sigs.k8s.io/controller-runtime/pkg/runtime/log"
-	"sigs.k8s.io/controller-runtime/pkg/webhook"
+	// "sigs.k8s.io/controller-runtime/pkg/webhook"
 
 	"github.com/networkmachinery/networkmachinery-operators/pkg/apis/networkmachinery/install"
 	"github.com/networkmachinery/networkmachinery-operators/pkg/controllers"
 	"github.com/networkmachinery/networkmachinery-operators/pkg/controllers/networkperformance/controller"
-	networkmachineryhandlers "github.com/networkmachinery/networkmachinery-operators/pkg/controllers/networkperformance/webhook"
+	// networkmachineryhandlers "github.com/networkmachinery/networkmachinery-operators/pkg/controllers/networkperformance/webhook"
 	"github.com/networkmachinery/networkmachinery-operators/pkg/utils"
 )
 
@@ -55,10 +55,10 @@ func NewNetworkPerformanceTestCmd(ctx context.Context) *cobra.Command {
 			}
 
 			entryLog.Info("Setting up webhook server")
-			admissionServer := mgr.GetWebhookServer()
+			// admissionServer := mgr.GetWebhookServer()
 
 			entryLog.Info("registering webhooks to the webhook server")
-			admissionServer.Register(specValidationServerPath, &webhook.Admission{Handler: &networkmachineryhandlers.SpecValidator{}})
+			// admissionServer.Register(specValidationServerPath, &webhook.Admission{Handler: &networkmachineryhandlers.SpecValidator{}})
 
 			if err := controller.Add(mgr); err != nil {
 				utils.LogErrAndExit(err, "Could not add controller to manager")

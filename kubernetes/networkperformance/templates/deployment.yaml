@@ -26,15 +26,4 @@ spec:
           command:
             - /opt/networkmachinery-operators/bin/networkmachinery-hyper
             - networkperformance-test-controller
-          ports:
-            - name: webhook-server
-              containerPort: 9876
-              protocol: TCP
-          volumeMounts:
-            - name: cert
-              mountPath: /tmp/k8s-webhook-server/serving-certs #default path
-      volumes:
-        - name: cert
-          secret:
-            secretName: {{ .Values.webhookConfig.secretName }}
-            defaultMode: 420
+     

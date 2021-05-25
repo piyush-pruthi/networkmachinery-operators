@@ -27,8 +27,8 @@ func (r *ReconcileNetworkPerformanceTest) reconcilePerfTest(networkPerformanceTe
 	if err != nil {
 		if errors.IsNotFound(err) {
 			// create pod
-			image := "pruthi/private-workspace:k8s-netperf"
-			args := []string{"--image=pruthi/private-workspace:nptests", fmt.Sprintf("--iterations=%v", networkPerformanceTest.Spec.Iterations)}
+			image := "pruthi/k8s-netperf"
+			args := []string{"--image=pruthi/nptests", fmt.Sprintf("--iterations=%v", networkPerformanceTest.Spec.Iterations)}
 			err := apimachinery.CreatePod(r.config, networkPerformanceTest.Name, image, args, Name)
 			return err
 		}
